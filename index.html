@@ -228,6 +228,193 @@
                 padding: 1.25rem 0.75rem;
             }
         }
+
+        /* New Features CSS (Added without modifying original styles) */
+        /* Navbar Enhancements */
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .contact-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background-color: white;
+            margin-top: 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: #f8fafc;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background-color: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Search Functionality */
+        .search-container {
+            padding: 0 2rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        #toolSearch {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        #toolSearch:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            margin-left: 1rem;
+        }
+        
+        .theme-toggle:hover {
+            background-color: #e2e8f0;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .navbar,
+        .dark-mode .tool-card,
+        .dark-mode .features,
+        .dark-mode .feature-card,
+        .dark-mode .highlight-box {
+            background-color: #1e293b;
+            color: #f8fafc;
+        }
+        
+        .dark-mode .tool-name,
+        .dark-mode .main-title,
+        .dark-mode .section-header h2 {
+            color: white;
+        }
+        
+        .dark-mode .tool-desc,
+        .dark-mode .subtitle,
+        .dark-mode .section-header p {
+            color: #94a3b8;
+        }
+        
+        .dark-mode #toolSearch {
+            background-color: #334155;
+            border-color: #475569;
+            color: white;
+        }
+
+        /* Use Now Buttons */
+        .use-now-btn {
+            display: block;
+            width: 80%;
+            margin: 1.5rem auto 0;
+            padding: 8px 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .use-now-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .use-now-btn i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -238,7 +425,15 @@
             <div class="logo-icon">P</div>
             <span>PDF Tools Hub</span>
         </div>
-        <div></div> <!-- For future menu items -->
+        <div class="nav-links">
+            <a href="#all-tools" class="nav-link">All Tools</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#about" class="nav-link">About</a>
+            <button class="contact-btn">Contact</button>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
     </nav>
     
     <div class="header">
@@ -252,102 +447,203 @@
             </p>
         </div>
     </div>
+
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search for tools..." id="toolSearch">
+        </div>
+    </div>
     
-    <div class="tools-container">
+    <div class="tools-container" id="all-tools">
         <!-- PDF Tools -->
         <div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Merge PDF">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/merge-pdf.html">Merge PDF</a>
-    </h3>
-    <p class="tool-desc">Combine multiple PDF files into one document</p>
-</div>
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Merge PDF">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/merge-pdf.html">Merge PDF</a>
+            </h3>
+            <p class="tool-desc">Combine multiple PDF files into one document</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337958.png" alt="Split PDF">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/split-pdf.html">Split PDF</a>
-    </h3>
-    <p class="tool-desc">Extract pages or divide PDF into multiple files</p>
-</div>
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337958.png" alt="Split PDF">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/split-pdf.html">Split PDF</a>
+            </h3>
+            <p class="tool-desc">Extract pages or divide PDF into multiple files</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337953.png" alt="Compress PDF">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/compress-pdf.html">Compress PDF</a>
-    </h3>
-    <p class="tool-desc">Reduce PDF file size without losing quality</p>
-</div>
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337953.png" alt="Compress PDF">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/compress-pdf.html">Compress PDF</a>
+            </h3>
+            <p class="tool-desc">Reduce PDF file size without losing quality</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="PDF to Word">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/pdf-to-word.html">PDF to Word</a>
-    </h3>
-    <p class="tool-desc">Convert PDF files to editable Word documents</p>
-</div>
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="PDF to Word">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/pdf-to-word.html">PDF to Word</a>
+            </h3>
+            <p class="tool-desc">Convert PDF files to editable Word documents</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337942.png" alt="PDF to Image">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/pdf-to-image.html">PDF to Image</a>
-    </h3>
-    <p class="tool-desc">Convert PDF pages to JPG, PNG or other formats</p>
-</div>
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337942.png" alt="PDF to Image">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/pdf-to-image.html">PDF to Image</a>
+            </h3>
+            <p class="tool-desc">Convert PDF pages to JPG, PNG or other formats</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/337/337927.png" alt="Edit PDF">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/edit-pdf.html">Edit PDF</a>
-    </h3>
-    <p class="tool-desc">Modify text, images and pages in your PDF</p>
-</div>
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337927.png" alt="Edit PDF">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/edit-pdf.html">Edit PDF</a>
+            </h3>
+            <p class="tool-desc">Modify text, images and pages in your PDF</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<!-- Image Tools -->
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/3022/3022559.png" alt="Background Remove">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/background-remove.html">Background Remove</a>
-    </h3>
-    <p class="tool-desc">Automatically remove background from images</p>
-</div>
+        <!-- Image Tools -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/3022/3022559.png" alt="Background Remove">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/background-remove.html">Background Remove</a>
+            </h3>
+            <p class="tool-desc">Automatically remove background from images</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/3022/3022569.png" alt="Image to PDF">
-    </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/image-to-pdf.html">Image to PDF</a>
-    </h3>
-    <p class="tool-desc">Convert JPG, PNG to PDF documents</p>
-</div>
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/3022/3022569.png" alt="Image to PDF">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/image-to-pdf.html">Image to PDF</a>
+            </h3>
+            <p class="tool-desc">Convert JPG, PNG to PDF documents</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
 
-<div class="tool-card">
-    <div class="tool-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/3022/3022585.png" alt="Image Compression">
+        <div class="tool-card">
+            <div class="tool-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/3022/3022585.png" alt="Image Compression">
+            </div>
+            <h3 class="tool-name">
+                <a href="/Tools-/image-compression.html">Image Compression</a>
+            </h3>
+            <p class="tool-desc">Reduce image file size while preserving quality</p>
+            <button class="use-now-btn">Use Now <i class="fas fa-arrow-right"></i></button>
+        </div>
     </div>
-    <h3 class="tool-name">
-        <a href="/Tools-/image-compression.html">Image Compression</a>
-    </h3>
-    <p class="tool-desc">Reduce image file size while preserving quality</p>
-</div>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Why Choose Our Tools</h2>
+            <p>Powerful features that make document processing effortless</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Secure Processing</h3>
+                <p>All files are processed in your browser. Nothing is uploaded to our servers.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Process documents in seconds with our optimized tools.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3>No Limits</h3>
+                <p>No file size limits, watermarks or hidden charges.</p>
+            </div>
+        </div>
+    </section>
+    
     <div class="footer">
         <div class="footer-logo">PDF Tools Hub</div>
         <p>© 2023 PDF Tools Hub. All tools are completely free to use with no hidden limits or watermarks.</p>
     </div>
+
+    <script>
+        // Search Functionality
+        document.getElementById('toolSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const toolCards = document.querySelectorAll('.tool-card');
+            
+            toolCards.forEach(card => {
+                const toolName = card.querySelector('.tool-name').textContent.toLowerCase();
+                const toolDesc = card.querySelector('.tool-desc').textContent.toLowerCase();
+                
+                if (toolName.includes(searchTerm) || toolDesc.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Use Now buttons functionality
+        document.querySelectorAll('.use-now-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const toolCard = this.closest('.tool-card');
+                const toolLink = toolCard.querySelector('.tool-name a').href;
+                window.location.href = toolLink;
+            });
+        });
+    </script>
 </body>
 </html>
