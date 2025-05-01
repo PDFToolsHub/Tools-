@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge PDF Files Online - Free PDF Combiner Tool | PDF Tools Hub</title>
-    <meta name="description" content="Merge multiple PDF files into one document for free. No watermarks, no registration needed. Combine PDFs quickly and securely online.">
-    <meta name="keywords" content="merge pdf, combine pdf, pdf merger, join pdf files, online pdf tools">
+    <title>Convert PDF to Image Online - Free PDF to JPG/PNG Converter | PDF Tools Hub</title>
+    <meta name="description" content="Convert PDF pages to high-quality JPG, PNG or other image formats for free. No watermarks, no registration needed. Extract images from PDF quickly and securely.">
+    <meta name="keywords" content="pdf to image, pdf to jpg, pdf to png, convert pdf to image, extract images from pdf">
     <meta name="author" content="PDF Tools Hub">
-    <link rel="canonical" href="https://yourwebsite.com/merge-pdf">
+    <link rel="canonical" href="https://yourwebsite.com/pdf-to-image">
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Merge PDF Files Online - Free PDF Combiner Tool">
-    <meta property="og:description" content="Merge multiple PDF files into one document for free. No watermarks, no registration needed.">
+    <meta property="og:title" content="Convert PDF to Image Online - Free PDF to JPG/PNG Converter">
+    <meta property="og:description" content="Convert PDF pages to high-quality JPG, PNG or other image formats for free. No watermarks, no registration needed.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/merge-pdf">
+    <meta property="og:url" content="https://yourwebsite.com/pdf-to-image">
     
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -184,18 +184,18 @@
             background-color: #e0e7ff;
         }
         
-        /* File List */
-        .file-list {
+        /* File Info */
+        .file-info {
             margin-top: 2rem;
+            display: none;
         }
         
-        .file-item {
+        .file-card {
             display: flex;
             align-items: center;
             padding: 1rem;
             border: 1px solid var(--border);
             border-radius: 8px;
-            margin-bottom: 0.75rem;
             background-color: white;
         }
         
@@ -204,7 +204,7 @@
             color: var(--primary);
         }
         
-        .file-info {
+        .file-details {
             flex: 1;
         }
         
@@ -218,12 +218,7 @@
             color: var(--text-light);
         }
         
-        .file-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .file-action-btn {
+        .file-action {
             background: none;
             border: none;
             color: var(--text-light);
@@ -231,7 +226,7 @@
             font-size: 1.1rem;
         }
         
-        .file-action-btn:hover {
+        .file-action:hover {
             color: var(--primary);
         }
         
@@ -280,6 +275,39 @@
             font-family: inherit;
         }
         
+        .range-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .range-input {
+            flex: 1;
+        }
+        
+        .range-value {
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* Page Selection */
+        .page-selection {
+            margin-top: 1rem;
+        }
+        
+        .page-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .page-option {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
         /* Action Buttons */
         .action-buttons {
             display: flex;
@@ -295,7 +323,11 @@
             border-radius: 12px;
             padding: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        .results-header {
             text-align: center;
+            margin-bottom: 1.5rem;
         }
         
         .success-icon {
@@ -304,8 +336,45 @@
             margin-bottom: 1rem;
         }
         
-        .download-btn {
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
             margin-top: 1.5rem;
+        }
+        
+        .image-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .image-preview {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            background-color: #f8fafc;
+        }
+        
+        .image-info {
+            padding: 0.75rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .image-name {
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .image-size {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        
+        .download-all {
+            margin-top: 1.5rem;
+            text-align: center;
         }
         
         /* Loading State */
@@ -356,6 +425,10 @@
             .btn {
                 width: 100%;
             }
+            
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
         }
         
         /* SEO Content */
@@ -396,7 +469,7 @@
             <ins class="adsbygoogle"
                 style="display:block"
                 data-ad-client="ca-pub-8369124676545773"
-                data-ad-slot="8240339673"
+                data-ad-slot="9569974464"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
             <script>
@@ -405,8 +478,8 @@
         </div>
         
         <div class="tool-header">
-            <h1 class="tool-title">Merge PDF Files</h1>
-            <p class="tool-subtitle">Combine multiple PDF documents into one file. Drag and drop your files below or click to browse.</p>
+            <h1 class="tool-title">PDF to Image Converter</h1>
+            <p class="tool-subtitle">Convert PDF pages to high-quality JPG, PNG, or other image formats. Drag and drop your PDF file below or click to browse.</p>
         </div>
         
         <div class="upload-area">
@@ -414,14 +487,25 @@
                 <div class="upload-icon">
                     <i class="fas fa-file-pdf"></i>
                 </div>
-                <h3 class="upload-text">Drag & Drop PDF files here</h3>
+                <h3 class="upload-text">Drag & Drop PDF file here</h3>
                 <p class="upload-subtext">or</p>
-                <button class="btn" id="browseBtn">Select Files</button>
-                <input type="file" id="fileInput" accept=".pdf" multiple style="display: none;">
+                <button class="btn" id="browseBtn">Select PDF File</button>
+                <input type="file" id="fileInput" accept=".pdf" style="display: none;">
             </div>
             
-            <div class="file-list" id="fileList">
-                <!-- Files will be added here dynamically -->
+            <div class="file-info" id="fileInfo">
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="file-details">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-size" id="fileSize"></div>
+                    </div>
+                    <button class="file-action" id="removeFile">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </div>
         </div>
         
@@ -433,7 +517,7 @@
             <ins class="adsbygoogle"
                 style="display:block"
                 data-ad-client="ca-pub-8369124676545773"
-                data-ad-slot="8240339673"
+                data-ad-slot="9569974464"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
             <script>
@@ -442,57 +526,86 @@
         </div>
         
         <div class="options-section">
-            <h2 class="section-title">Merge Options</h2>
+            <h2 class="section-title">Conversion Options</h2>
             
             <div class="option-group">
-                <label class="option-label">Compression Level</label>
+                <label class="option-label">Output Format</label>
                 <div class="radio-group">
                     <label class="radio-option">
-                        <input type="radio" name="compression" value="low" checked>
-                        Low (Best Quality)
+                        <input type="radio" name="format" value="jpg" checked>
+                        JPG (Best for photos)
                     </label>
                     <label class="radio-option">
-                        <input type="radio" name="compression" value="medium">
-                        Medium (Balanced)
+                        <input type="radio" name="format" value="png">
+                        PNG (Best for text/diagrams)
                     </label>
                     <label class="radio-option">
-                        <input type="radio" name="compression" value="high">
-                        High (Smaller File)
+                        <input type="radio" name="format" value="webp">
+                        WebP (Good balance)
                     </label>
                 </div>
             </div>
             
             <div class="option-group">
-                <label for="pageOrder" class="option-label">Page Order</label>
-                <select id="pageOrder" class="select">
-                    <option value="normal">Files in order, pages in order</option>
-                    <option value="reverse">Files in order, pages in reverse</option>
-                    <option value="alternate">Alternate pages from files</option>
-                </select>
+                <label for="quality" class="option-label">Image Quality</label>
+                <div class="range-group">
+                    <input type="range" id="quality" min="1" max="100" value="85" class="range-input">
+                    <span id="qualityValue" class="range-value">85%</span>
+                </div>
             </div>
             
             <div class="option-group">
-                <label class="option-label">Image Optimization</label>
+                <label class="option-label">Pages to Convert</label>
                 <div class="radio-group">
                     <label class="radio-option">
-                        <input type="radio" name="imageOpt" value="none" checked>
-                        None (Original Quality)
+                        <input type="radio" name="pages" value="all" checked>
+                        All Pages
                     </label>
                     <label class="radio-option">
-                        <input type="radio" name="imageOpt" value="medium">
-                        Medium (Recommended)
+                        <input type="radio" name="pages" value="range">
+                        Page Range
                     </label>
                     <label class="radio-option">
-                        <input type="radio" name="imageOpt" value="high">
-                        High (Maximum Compression)
+                        <input type="radio" name="pages" value="select">
+                        Select Pages
+                    </label>
+                </div>
+                
+                <div class="page-selection" id="pageRangeGroup" style="display: none;">
+                    <label for="pageRange" class="option-label">Enter page range (e.g. 1-5, 7, 9-12)</label>
+                    <input type="text" id="pageRange" class="select" placeholder="1-3, 5, 7-10">
+                </div>
+                
+                <div class="page-selection" id="pageSelectGroup" style="display: none;">
+                    <label class="option-label">Select pages to convert</label>
+                    <div class="page-options" id="pageOptions">
+                        <!-- Pages will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option-group">
+                <label class="option-label">Resolution (DPI)</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="dpi" value="150" checked>
+                        150 dpi (Standard)
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="dpi" value="300">
+                        300 dpi (High Quality)
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="dpi" value="72">
+                        72 dpi (Web)
                     </label>
                 </div>
             </div>
         </div>
         
         <div class="action-buttons">
-            <button class="btn" id="mergeBtn" disabled>
-                <i class="fas fa-object-group"></i> Merge PDFs
+            <button class="btn" id="convertBtn" disabled>
+                <i class="fas fa-exchange-alt"></i> Convert to Images
             </button>
             <button class="btn btn-outline" id="resetBtn">
                 <i class="fas fa-redo"></i> Reset
@@ -501,20 +614,28 @@
         
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p>Merging your PDF files...</p>
+            <p>Converting your PDF to images...</p>
             <p>Please wait, this may take a few moments.</p>
         </div>
         
         <div class="results-section" id="results">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
+            <div class="results-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Conversion Successful!</h2>
+                <p>Your PDF has been converted to images.</p>
             </div>
-            <h2>PDFs Merged Successfully!</h2>
-            <p>Your combined PDF file is ready to download.</p>
-            <p class="file-info" id="resultInfo"></p>
-            <button class="btn download-btn" id="downloadBtn">
-                <i class="fas fa-download"></i> Download Merged PDF
-            </button>
+            
+            <div class="image-grid" id="imageGrid">
+                <!-- Images will be added here dynamically -->
+            </div>
+            
+            <div class="download-all">
+                <button class="btn" id="downloadAllBtn">
+                    <i class="fas fa-download"></i> Download All as ZIP
+                </button>
+            </div>
         </div>
         
         <!-- Bottom Ad Unit -->
@@ -525,7 +646,7 @@
             <ins class="adsbygoogle"
                 style="display:block"
                 data-ad-client="ca-pub-8369124676545773"
-                data-ad-slot="8240339673"
+                data-ad-slot="9569974464"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
             <script>
@@ -535,21 +656,22 @@
         
         <!-- SEO Content Section -->
         <div class="seo-content">
-            <h2 class="seo-title">How to Merge PDF Files Online for Free</h2>
-            <p class="seo-text">Our PDF merger allows you to combine multiple PDF documents into a single file quickly and easily. Whether you need to merge reports, contracts, or any other PDF documents, our online tool provides a simple solution without requiring any software installation.</p>
+            <h2 class="seo-title">How to Convert PDF to Images Online</h2>
+            <p class="seo-text">Our PDF to Image converter allows you to transform PDF pages into high-quality JPG, PNG, or WebP images quickly and easily. Whether you need to extract diagrams from a report, convert scanned documents to images, or prepare PDF content for web use, our online tool provides a simple solution without requiring any software installation.</p>
             
-            <h3 class="seo-title">Why Use Our PDF Merger?</h3>
+            <h3 class="seo-title">Why Use Our PDF to Image Converter?</h3>
             <p class="seo-text">- 100% free with no watermarks or registration required</p>
+            <p class="seo-text">- Multiple output formats (JPG, PNG, WebP)</p>
+            <p class="seo-text">- Adjustable quality and resolution settings</p>
+            <p class="seo-text">- Select specific pages or convert the entire document</p>
             <p class="seo-text">- Secure processing - files are deleted from our servers after 1 hour</p>
-            <p class="seo-text">- Preserves the original quality of your documents</p>
-            <p class="seo-text">- Works on any device - Windows, Mac, Linux, smartphones</p>
-            <p class="seo-text">- No file size limits (up to 5GB for premium users)</p>
             
-            <h3 class="seo-title">Common Uses for PDF Merging</h3>
-            <p class="seo-text">- Combining multiple chapters of an ebook into a single file</p>
-            <p class="seo-text">- Merging scanned documents into one PDF</p>
-            <p class="seo-text">- Creating a portfolio by combining different works</p>
-            <p class="seo-text">- Assembling reports from multiple contributors</p>
+            <h3 class="seo-title">Common Uses for PDF to Image Conversion</h3>
+            <p class="seo-text">- Extracting diagrams or charts for presentations</p>
+            <p class="seo-text">- Converting scanned documents to shareable images</p>
+            <p class="seo-text">- Preparing PDF content for websites or social media</p>
+            <p class="seo-text">- Creating image assets from PDF documents</p>
+            <p class="seo-text">- Converting PDF pages to insert into other documents</p>
         </div>
     </div>
     
@@ -558,14 +680,24 @@
             const dropzone = document.getElementById('dropzone');
             const fileInput = document.getElementById('fileInput');
             const browseBtn = document.getElementById('browseBtn');
-            const fileList = document.getElementById('fileList');
-            const mergeBtn = document.getElementById('mergeBtn');
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            const removeFile = document.getElementById('removeFile');
+            const convertBtn = document.getElementById('convertBtn');
             const resetBtn = document.getElementById('resetBtn');
             const loading = document.getElementById('loading');
             const results = document.getElementById('results');
-            const downloadBtn = document.getElementById('downloadBtn');
+            const imageGrid = document.getElementById('imageGrid');
+            const downloadAllBtn = document.getElementById('downloadAllBtn');
+            const qualityInput = document.getElementById('quality');
+            const qualityValue = document.getElementById('qualityValue');
+            const pageRangeGroup = document.getElementById('pageRangeGroup');
+            const pageSelectGroup = document.getElementById('pageSelectGroup');
+            const pageOptions = document.getElementById('pageOptions');
             
-            let files = [];
+            let currentFile = null;
+            let totalPages = 10; // In a real app, this would be detected from the PDF
             
             // Handle drag and drop events
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -597,8 +729,10 @@
             
             function handleDrop(e) {
                 const dt = e.dataTransfer;
-                const newFiles = dt.files;
-                handleFiles(newFiles);
+                const files = dt.files;
+                if (files.length > 0) {
+                    handleFile(files[0]);
+                }
             }
             
             // Handle file selection via button
@@ -607,72 +741,28 @@
             });
             
             fileInput.addEventListener('change', () => {
-                handleFiles(fileInput.files);
-                fileInput.value = ''; // Reset input to allow selecting same files again
+                if (fileInput.files.length > 0) {
+                    handleFile(fileInput.files[0]);
+                }
+                fileInput.value = ''; // Reset input to allow selecting same file again
             });
             
-            // Process selected files
-            function handleFiles(newFiles) {
-                for (let i = 0; i < newFiles.length; i++) {
-                    const file = newFiles[i];
-                    if (file.type === 'application/pdf') {
-                        files.push(file);
-                    }
-                }
-                updateFileList();
-            }
-            
-            // Update the file list UI
-            function updateFileList() {
-                fileList.innerHTML = '';
-                
-                if (files.length === 0) {
-                    mergeBtn.disabled = true;
-                    return;
-                }
-                
-                mergeBtn.disabled = false;
-                
-                files.forEach((file, index) => {
-                    const fileItem = document.createElement('div');
-                    fileItem.className = 'file-item';
+            // Process selected file
+            function handleFile(file) {
+                if (file.type === 'application/pdf') {
+                    currentFile = file;
+                    fileName.textContent = file.name;
+                    fileSize.textContent = formatFileSize(file.size);
+                    fileInfo.style.display = 'block';
+                    convertBtn.disabled = false;
                     
-                    fileItem.innerHTML = `
-                        <div class="file-icon">
-                            <i class="fas fa-file-pdf"></i>
-                        </div>
-                        <div class="file-info">
-                            <div class="file-name">${file.name}</div>
-                            <div class="file-size">${formatFileSize(file.size)}</div>
-                        </div>
-                        <div class="file-actions">
-                            <button class="file-action-btn move-up" data-index="${index}">
-                                <i class="fas fa-arrow-up"></i>
-                            </button>
-                            <button class="file-action-btn move-down" data-index="${index}">
-                                <i class="fas fa-arrow-down"></i>
-                            </button>
-                            <button class="file-action-btn remove-file" data-index="${index}">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                    
-                    fileList.appendChild(fileItem);
-                });
-                
-                // Add event listeners for file actions
-                document.querySelectorAll('.move-up').forEach(btn => {
-                    btn.addEventListener('click', moveFileUp);
-                });
-                
-                document.querySelectorAll('.move-down').forEach(btn => {
-                    btn.addEventListener('click', moveFileDown);
-                });
-                
-                document.querySelectorAll('.remove-file').forEach(btn => {
-                    btn.addEventListener('click', removeFile);
-                });
+                    // In a real app, you would read the PDF to get actual page count
+                    // For demo, we'll simulate detecting 10 pages
+                    totalPages = 10;
+                    updatePageOptions();
+                } else {
+                    alert('Please select a PDF file.');
+                }
             }
             
             // Helper function to format file size
@@ -684,64 +774,107 @@
                 return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
             }
             
-            // File manipulation functions
-            function moveFileUp(e) {
-                const index = parseInt(e.target.closest('button').getAttribute('data-index'));
-                if (index > 0) {
-                    [files[index], files[index - 1]] = [files[index - 1], files[index]];
-                    updateFileList();
-                }
-            }
-            
-            function moveFileDown(e) {
-                const index = parseInt(e.target.closest('button').getAttribute('data-index'));
-                if (index < files.length - 1) {
-                    [files[index], files[index + 1]] = [files[index + 1], files[index]];
-                    updateFileList();
-                }
-            }
-            
-            function removeFile(e) {
-                const index = parseInt(e.target.closest('button').getAttribute('data-index'));
-                files.splice(index, 1);
-                updateFileList();
-            }
+            // Remove file
+            removeFile.addEventListener('click', () => {
+                currentFile = null;
+                fileInfo.style.display = 'none';
+                convertBtn.disabled = true;
+            });
             
             // Reset button
             resetBtn.addEventListener('click', () => {
-                files = [];
-                updateFileList();
+                currentFile = null;
+                fileInfo.style.display = 'none';
+                convertBtn.disabled = true;
                 results.style.display = 'none';
+                document.querySelector('input[name="pages"][value="all"]').checked = true;
+                pageRangeGroup.style.display = 'none';
+                pageSelectGroup.style.display = 'none';
+                qualityInput.value = 85;
+                qualityValue.textContent = '85%';
             });
             
-            // Merge button
-            mergeBtn.addEventListener('click', mergePDFs);
+            // Update quality value display
+            qualityInput.addEventListener('input', () => {
+                qualityValue.textContent = qualityInput.value + '%';
+            });
             
-            // Simulate PDF merging (in a real app, this would upload to a server)
-            function mergePDFs() {
+            // Handle page selection options
+            document.querySelectorAll('input[name="pages"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    pageRangeGroup.style.display = this.value === 'range' ? 'block' : 'none';
+                    pageSelectGroup.style.display = this.value === 'select' ? 'block' : 'none';
+                });
+            });
+            
+            // Update page options checkboxes
+            function updatePageOptions() {
+                pageOptions.innerHTML = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    const option = document.createElement('label');
+                    option.className = 'page-option';
+                    option.innerHTML = `
+                        <input type="checkbox" name="selectedPages" value="${i}" checked>
+                        ${i}
+                    `;
+                    pageOptions.appendChild(option);
+                }
+            }
+            
+            // Convert button
+            convertBtn.addEventListener('click', convertToImages);
+            
+            // Simulate PDF to image conversion (in a real app, this would upload to a server)
+            function convertToImages() {
                 // Show loading state
                 loading.style.display = 'block';
+                results.style.display = 'none';
+                
+                // Get selected options
+                const format = document.querySelector('input[name="format"]:checked').value;
+                const quality = qualityInput.value;
+                const dpi = document.querySelector('input[name="dpi"]:checked').value;
+                const pagesOption = document.querySelector('input[name="pages"]:checked').value;
                 
                 // Simulate processing delay
                 setTimeout(() => {
                     loading.style.display = 'none';
-                    showResults();
+                    showResults(format, quality, dpi);
                 }, 3000);
             }
             
-            // Show results after merging
-            function showResults() {
-                const totalSize = files.reduce((sum, file) => sum + file.size, 0);
-                const compressionLevel = document.querySelector('input[name="compression"]:checked').value;
+            // Show results after conversion
+            function showResults(format, quality, dpi) {
+                imageGrid.innerHTML = '';
                 
-                let sizeReduction = 0;
-                if (compressionLevel === 'medium') sizeReduction = 0.3;
-                if (compressionLevel === 'high') sizeReduction = 0.6;
+                // Determine how many pages to show based on selection
+                let pageCount = 0;
+                if (document.querySelector('input[name="pages"][value="all"]').checked) {
+                    pageCount = totalPages;
+                } else if (document.querySelector('input[name="pages"][value="range"]').checked) {
+                    // In a real app, parse the range
+                    pageCount = 3; // Demo - show 3 pages
+                } else {
+                    // Count checked pages
+                    pageCount = document.querySelectorAll('input[name="selectedPages"]:checked').length;
+                }
                 
-                const finalSize = totalSize * (1 - sizeReduction);
-                
-                document.getElementById('resultInfo').textContent = 
-                    `${files.length} files merged • ${formatFileSize(finalSize)} • ${compressionLevel} compression`;
+                // Create mock image results
+                for (let i = 1; i <= pageCount; i++) {
+                    const imageItem = document.createElement('div');
+                    imageItem.className = 'image-item';
+                    
+                    // In a real app, this would show actual converted images
+                    imageItem.innerHTML = `
+                        <img src="https://via.placeholder.com/800x1132/ffffff/2563eb?text=Page+${i}" class="image-preview">
+                        <div class="image-info">
+                            <div class="image-name">page_${i}.${format}</div>
+                            <div class="image-size">${Math.floor(Math.random() * 500) + 200} KB • ${dpi} DPI</div>
+                        </div>
+                    `;
+                    
+                    imageGrid.appendChild(imageItem);
+                }
                 
                 results.style.display = 'block';
                 
@@ -749,10 +882,10 @@
                 results.scrollIntoView({ behavior: 'smooth' });
             }
             
-            // Download button
-            downloadBtn.addEventListener('click', () => {
-                alert('In a real implementation, this would download the merged PDF file.');
-                // In a real app, this would download the file from the server
+            // Download all button
+            downloadAllBtn.addEventListener('click', () => {
+                alert('In a real implementation, this would download a ZIP file containing all converted images.');
+                // In a real app, this would download the ZIP from the server
             });
         });
     </script>
