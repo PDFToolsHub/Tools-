@@ -3,852 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Background Remover | PDF Tools Hub</title>
+    <title>Remove Background from Images - Free Online Tool | PDF Tools Hub</title>
+    <meta name="description" content="Remove backgrounds from images automatically with AI. 100% free online background remover tool for product photos, portraits, and more.">
+    <meta name="keywords" content="remove background, transparent background, image background remover, free bg remover, ai background removal">
+    <meta name="author" content="PDF Tools Hub">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Remove Background from Images - Free Online Tool">
+    <meta property="og:description" content="Remove backgrounds automatically with AI. No Photoshop skills needed!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/background-remover">
+    <meta property="og:image" content="https://yourwebsite.com/images/bg-remover-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3022/3022559.png" type="image/png">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Background Remover Tool",
+      "description": "Free online tool to remove backgrounds from images automatically",
+      "url": "https://yourwebsite.com/background-remover",
+      "applicationCategory": "ImageEditingTool",
+      "operatingSystem": "Any"
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-8369124676545773" crossorigin="anonymous"></script>
+    
     <style>
         :root {
-            --primary: #7c3aed;
-            --primary-dark: #6d28d9;
-            --accent: #8b5cf6;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --text: #334155;
-            --text-light: #64748b;
-            --success: #10b981;
-            --error: #ef4444;
+            --primary: #7C3AED;
+            --primary-dark: #6D28D9;
+            --accent: #8B5CF6;
+            --light: #F5F3FF;
+            --dark: #1F2937;
+            --text: #374151;
+            --text-light: #6B7280;
+            --error: #EF4444;
+            --success: #10B981;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f7ff;
+            background-color: #F9FAFB;
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.5;
         }
-
+        
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Main Container */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
-
-        /* Header */
-        .header {
+        
+        .tool-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
-
-        .header h1 {
-            font-size: 2.8rem;
+        
+        .tool-title {
+            font-size: 2rem;
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
+            margin-bottom: 0.5rem;
         }
-
-        .header p {
-            font-size: 1.2rem;
+        
+        .tool-subtitle {
             color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Upload Area */
-        .upload-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .upload-area:hover {
-            border-color: var(--accent);
-            background-color: #f8fafc;
-        }
-
-        .upload-area.active {
-            border-color: var(--success);
-            background-color: #f0fdf4;
-        }
-
-        .upload-icon {
-            font-size: 3.5rem;
-            color: var(--accent);
             margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
         }
-
-        .upload-text {
-            font-size: 1.4rem;
+        
+        /* Upload Box */
+        .upload-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .file-drop-area {
+            border: 2px dashed #DDD6FE;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: var(--light);
+        }
+        
+        .file-drop-area:hover {
+            border-color: var(--primary);
+        }
+        
+        .file-drop-area.active {
+            border-color: var(--primary);
+            background: rgba(124, 58, 237, 0.1);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-label {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .file-label i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(124, 58, 237, 0.1);
+        }
+        
+        /* Image Preview */
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        
+        .preview-box {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .preview-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-
-        .upload-subtext {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        /* Buttons */
-        .btn {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 6px rgba(124, 58, 237, 0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(124, 58, 237, 0.25);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-        }
-
-        /* Controls */
-        .controls-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
+        
+        .image-preview {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            background: #F3F4F6;
             display: none;
         }
-
-        .controls-title {
-            font-size: 1.5rem;
+        
+        /* Options */
+        .options-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .options-title {
+            font-size: 1.25rem;
             font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--dark);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
-
-        .controls-title i {
-            color: var(--primary);
-        }
-
+        
         .option-group {
             margin-bottom: 1.5rem;
         }
-
-        .option-header {
-            display: flex;
-            justify-content: space-between;
+        
+        .option-label {
+            display: block;
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
-
-        .option-title {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .option-value {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .slider {
+        
+        .option-select {
             width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: #e2e8f0;
-            outline: none;
-            -webkit-appearance: none;
-            transition: all 0.3s ease;
-        }
-
-        .slider:hover {
-            background: #d1d5db;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            border: 3px solid white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .slider::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-        }
-
-        /* Preview Section */
-        .preview-section {
-            display: none;
-        }
-
-        .preview-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .comparison {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .image-card {
-            flex: 1;
-            min-width: 300px;
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-            transition: all 0.3s ease;
         }
-
-        .image-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-header {
+        
+        .checkbox-group {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
             align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
-
-        .image-label {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1.1rem;
-        }
-
-        .image-size {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            background: #f3f4f6;
-            padding: 0.3rem 0.6rem;
-            border-radius: 20px;
-        }
-
-        .image-preview {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABeSURBVDhP7dKxDcAgDERRZw0WYQ1WYQ1G8Qh0aZImQfzJkXxN9C6SfJf0V9W1tQZgBm5gB3ZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBQ7gA3Q8mQZRAAAAAElFTkSuQmCC');
-            background-size: 20px 20px;
-        }
-
-        /* Processing State */
-        .processing-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            padding: 3rem 2rem;
+        
+        /* Ad Container */
+        .ad-container {
+            margin: 2rem 0;
             text-align: center;
-            display: none;
-            margin-bottom: 2rem;
+            background: #F3F4F6;
+            padding: 1rem;
+            border-radius: 8px;
         }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid #e2e8f0;
-            border-top: 6px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1.5rem;
+        
+        .ad-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: var(--dark);
+            color: white;
+            margin-top: 3rem;
         }
-
-        .processing-title {
+        
+        .footer-logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
         }
-
-        .processing-text {
-            color: var(--text-light);
-            max-width: 500px;
+        
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            max-width: 600px;
             margin: 0 auto;
         }
-
-        /* Results */
-        .results-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            display: none;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 12px;
-            background: #f8fafc;
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        /* Download Section */
-        .download-section {
-            text-align: center;
-            margin-top: 2rem;
-            display: none;
-        }
-
-        .bg-options {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .bg-option {
-            cursor: pointer;
-            border-radius: 10px;
-            padding: 0.8rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid #e2e8f0;
-        }
-
-        .bg-option:hover {
-            border-color: var(--accent);
-        }
-
-        .bg-option.active {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* Responsive Design */
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-            
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .comparison {
+            .preview-container {
                 flex-direction: column;
             }
             
-            .image-card {
+            .preview-box {
                 min-width: 100%;
-            }
-            
-            .stats {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <div class="logo-icon">I</div>
+            <span>PDF Tools Hub</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tools.html">All Tools</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Main Container -->
     <div class="container">
-        <div class="header">
-            <h1>Advanced Background Remover</h1>
-            <p>Perfectly remove backgrounds from portraits and product photos with AI-powered technology</p>
+        <!-- Tool Header -->
+        <div class="tool-header">
+            <h1 class="tool-title">Remove Background from Images</h1>
+            <p class="tool-subtitle">100% automatic AI-powered background removal - No Photoshop skills needed!</p>
         </div>
         
-        <div class="upload-card">
-            <div class="upload-area" id="uploadArea">
-                <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                <h3 class="upload-text">Drag & Drop Your Photo Here</h3>
-                <p class="upload-subtext">Supports JPG, PNG, WEBP (Max 10MB)</p>
-                <button class="btn" id="selectBtn">
-                    <i class="fas fa-folder-open"></i> Select Photo
-                </button>
-                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        <!-- Top Ad -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-8369124676545773"
+                 crossorigin="anonymous"></script>
+            <!-- Background_Remover_Top -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-app-pub-8369124676545773"
+                 data-ad-slot="6408383254"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Upload Box -->
+        <div class="upload-box">
+            <div id="dropArea" class="file-drop-area">
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                <label for="fileInput" class="file-label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your image here or click to browse</p>
+                    <p><small>Supports JPG, PNG, WEBP (Max 10MB)</small></p>
+                </label>
+                <button id="uploadBtn" class="btn">Select Image</button>
             </div>
         </div>
-
-        <div class="controls-card" id="controls">
-            <h3 class="controls-title"><i class="fas fa-sliders-h"></i> Adjustment Settings</h3>
+        
+        <!-- Image Preview -->
+        <div class="preview-container">
+            <div class="preview-box">
+                <h3 class="preview-title">Original Image</h3>
+                <img id="originalPreview" class="image-preview" alt="Original image preview">
+            </div>
+            <div class="preview-box">
+                <h3 class="preview-title">Background Removed</h3>
+                <img id="resultPreview" class="image-preview" alt="Result preview">
+            </div>
+        </div>
+        
+        <!-- Options Box -->
+        <div class="options-box">
+            <h3 class="options-title">Removal Options</h3>
             
             <div class="option-group">
-                <div class="option-header">
-                    <span class="option-title">Removal Precision</span>
-                    <span class="option-value" id="precisionValue">50%</span>
-                </div>
-                <input type="range" min="1" max="100" value="50" class="slider" id="precisionSlider">
-                <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                    <small>Softer</small>
-                    <small>More Precise</small>
-                </div>
+                <label class="option-label">Edge Smoothness</label>
+                <select id="edgeSmoothness" class="option-select">
+                    <option value="low">Low (Faster)</option>
+                    <option value="medium" selected>Medium (Recommended)</option>
+                    <option value="high">High (More Precise)</option>
+                </select>
             </div>
             
             <div class="option-group">
-                <div class="option-header">
-                    <span class="option-title">Edge Smoothing</span>
-                    <span class="option-value" id="smoothValue">50%</span>
-                </div>
-                <input type="range" min="1" max="100" value="50" class="slider" id="smoothSlider">
-                <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                    <small>Sharper</small>
-                    <small>Smoother</small>
-                </div>
+                <label class="option-label">Output Format</label>
+                <select id="outputFormat" class="option-select">
+                    <option value="png">PNG (Transparent)</option>
+                    <option value="jpg">JPG (White Background)</option>
+                    <option value="webp">WEBP (Smaller File)</option>
+                </select>
             </div>
             
-            <div style="text-align: center; margin-top: 2rem;">
-                <button class="btn" id="removeBgBtn">
-                    <i class="fas fa-magic"></i> Remove Background Now
+            <div class="checkbox-group">
+                <input type="checkbox" id="enhanceQuality" checked>
+                <label for="enhanceQuality">Enhance image quality</label>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="shadowEffect">
+                <label for="shadowEffect">Add natural shadow effect</label>
+            </div>
+            
+            <button id="processBtn" class="btn" disabled>Remove Background</button>
+        </div>
+        
+        <!-- Results Box -->
+        <div id="resultsBox" style="display: none;">
+            <div class="options-box">
+                <h3 class="options-title">Download Options</h3>
+                
+                <div class="preview-container">
+                    <div class="preview-box">
+                        <button id="downloadPngBtn" class="btn btn-outline">
+                            <i class="fas fa-download"></i> Download PNG
+                        </button>
+                    </div>
+                    <div class="preview-box">
+                        <button id="downloadJpgBtn" class="btn btn-outline">
+                            <i class="fas fa-download"></i> Download JPG
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="newImageBtn" class="btn">
+                    <i class="fas fa-redo"></i> Process New Image
                 </button>
             </div>
         </div>
-
-        <div class="processing-card" id="processing">
-            <div class="spinner"></div>
-            <h3 class="processing-title">Processing Your Image</h3>
-            <p class="processing-text">Our AI is carefully removing the background from your photo. This usually takes 5-15 seconds.</p>
-        </div>
-
-        <div class="preview-section" id="previewSection">
-            <h3 class="preview-title">Your Results</h3>
-            
-            <div class="comparison">
-                <div class="image-card">
-                    <div class="image-header">
-                        <span class="image-label">Original Photo</span>
-                        <span class="image-size" id="originalSize">0 KB</span>
-                    </div>
-                    <img id="originalPreview" class="image-preview">
-                </div>
-                
-                <div class="image-card">
-                    <div class="image-header">
-                        <span class="image-label">Background Removed</span>
-                        <span class="image-size" id="resultSize">0 KB</span>
-                    </div>
-                    <img id="resultPreview" class="image-preview">
-                </div>
-            </div>
-            
-            <div class="results-card">
-                <h3 class="controls-title"><i class="fas fa-chart-bar"></i> Results Summary</h3>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value" id="reductionPercent">0%</div>
-                        <div class="stat-label">Size Reduction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="originalDimensions">0×0</div>
-                        <div class="stat-label">Original Dimensions</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="savedSize">0 KB</div>
-                        <div class="stat-label">File Size Saved</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-options">
-                <div class="bg-option active" data-bg="transparent">
-                    <i class="fas fa-chess-board"></i> Transparent
-                </div>
-                <div class="bg-option" data-bg="white">
-                    <i class="fas fa-square"></i> White
-                </div>
-                <div class="bg-option" data-bg="gray">
-                    <i class="fas fa-square"></i> Light Gray
-                </div>
-                <div class="bg-option" data-bg="custom">
-                    <i class="fas fa-palette"></i> Custom Color
-                </div>
-            </div>
-        </div>
-
-        <div class="download-section" id="downloadSection">
-            <button class="btn" id="downloadBtn">
-                <i class="fas fa-download"></i> Download Result (PNG)
-            </button>
-            <button class="btn btn-outline" id="newImageBtn" style="margin-left: 1rem;">
-                <i class="fas fa-redo"></i> Process Another Image
-            </button>
+        
+        <!-- Bottom Ad -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-8369124676545773"
+                 crossorigin="anonymous"></script>
+            <!-- Background_Remover_Bottom -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-app-pub-8369124676545773"
+                 data-ad-slot="6408383254"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
-
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">Image Tools Pro</div>
+        <p>© 2025 Image Tools Pro. All tools are free to use with no watermarks or registration.</p>
+    </div>
+    
+    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // DOM Elements
-            const fileInput = document.getElementById('fileInput');
-            const selectBtn = document.getElementById('selectBtn');
-            const uploadArea = document.getElementById('uploadArea');
-            const controls = document.getElementById('controls');
-            const processing = document.getElementById('processing');
-            const previewSection = document.getElementById('previewSection');
-            const originalPreview = document.getElementById('originalPreview');
-            const resultPreview = document.getElementById('resultPreview');
-            const removeBgBtn = document.getElementById('removeBgBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const newImageBtn = document.getElementById('newImageBtn');
-            const downloadSection = document.getElementById('downloadSection');
-            const precisionSlider = document.getElementById('precisionSlider');
-            const precisionValue = document.getElementById('precisionValue');
-            const smoothSlider = document.getElementById('smoothSlider');
-            const smoothValue = document.getElementById('smoothValue');
-            const originalSize = document.getElementById('originalSize');
-            const resultSize = document.getElementById('resultSize');
-            const reductionPercent = document.getElementById('reductionPercent');
-            const originalDimensions = document.getElementById('originalDimensions');
-            const savedSize = document.getElementById('savedSize');
-            const bgOptions = document.querySelectorAll('.bg-option');
-
-            // Variables
-            let originalImage = null;
-            let resultImageBlob = null;
-            let currentBg = 'transparent';
-
-            // Event Listeners
-            selectBtn.addEventListener('click', () => fileInput.click());
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.classList.add('active');
-            });
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('active');
-            });
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.classList.remove('active');
-                if (e.dataTransfer.files.length) {
-                    handleImageUpload(e.dataTransfer.files[0]);
-                }
-            });
-            fileInput.addEventListener('change', () => {
-                if (fileInput.files.length) {
-                    handleImageUpload(fileInput.files[0]);
-                }
-            });
-            removeBgBtn.addEventListener('click', removeBackground);
-            downloadBtn.addEventListener('click', downloadResult);
-            newImageBtn.addEventListener('click', resetTool);
-            precisionSlider.addEventListener('input', updateSliderValues);
-            smoothSlider.addEventListener('input', updateSliderValues);
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const dropArea = document.getElementById('dropArea');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const processBtn = document.getElementById('processBtn');
+        const originalPreview = document.getElementById('originalPreview');
+        const resultPreview = document.getElementById('resultPreview');
+        const resultsBox = document.getElementById('resultsBox');
+        const downloadPngBtn = document.getElementById('downloadPngBtn');
+        const downloadJpgBtn = document.getElementById('downloadJpgBtn');
+        const newImageBtn = document.getElementById('newImageBtn');
+        
+        // Variables
+        let selectedFile = null;
+        let processedImageUrl = null;
+        
+        // Event Listeners
+        fileInput.addEventListener('change', handleFileSelect);
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        processBtn.addEventListener('click', processImage);
+        downloadPngBtn.addEventListener('click', () => downloadImage('png'));
+        downloadJpgBtn.addEventListener('click', () => downloadImage('jpg'));
+        newImageBtn.addEventListener('click', resetTool);
+        
+        // Drag and Drop
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.classList.add('active');
+        });
+        
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('active');
+        });
+        
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('active');
+            if (e.dataTransfer.files.length) {
+                handleFileSelect({ target: { files: e.dataTransfer.files } });
+            }
+        });
+        
+        // Functions
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
             
-            bgOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    bgOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    currentBg = this.dataset.bg;
-                    updateBackground();
-                });
-            });
-
-            // Update slider values
-            function updateSliderValues() {
-                precisionValue.textContent = `${precisionSlider.value}%`;
-                smoothValue.textContent = `${smoothSlider.value}%`;
+            // Validate file
+            if (!file.type.match('image.*')) {
+                alert('Please select an image file (JPG, PNG, WEBP)');
+                return;
             }
-
-            // Handle image upload
-            function handleImageUpload(file) {
-                if (!file.type.match('image.*')) {
-                    showError('Please select an image file (JPG, PNG, WEBP)');
-                    return;
-                }
-
-                if (file.size > 10 * 1024 * 1024) {
-                    showError('File size exceeds 10MB limit');
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    originalImage = new Image();
-                    originalImage.onload = function() {
-                        originalPreview.src = e.target.result;
-                        originalSize.textContent = formatFileSize(file.size);
-                        originalDimensions.textContent = `${this.width}×${this.height}`;
-                        
-                        // Show controls
-                        controls.style.display = 'block';
-                        previewSection.style.display = 'none';
-                        downloadSection.style.display = 'none';
-                    };
-                    originalImage.src = e.target.result;
-                };
-                reader.onerror = function() {
-                    showError('Error reading file. Please try another image.');
-                };
-                reader.readAsDataURL(file);
+            
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size exceeds 10MB limit');
+                return;
             }
-
-            // Remove background (simulated AI)
-            function removeBackground() {
-                if (!originalImage) return;
-
-                // Show processing state
-                controls.style.display = 'none';
-                processing.style.display = 'block';
+            
+            selectedFile = file;
+            processBtn.disabled = false;
+            
+            // Display preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                originalPreview.src = e.target.result;
+                originalPreview.style.display = 'block';
                 
-                // Simulate AI processing delay
-                setTimeout(() => {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = originalImage.width;
-                    canvas.height = originalImage.height;
+                // Simulate AI processing for demo
+                resultPreview.src = e.target.result;
+                resultPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+            
+            // Update UI
+            document.querySelector('.file-label p').textContent = 
+                file.name.length > 25 
+                    ? file.name.substring(0, 10) + '...' + file.name.substring(file.name.length - 10)
+                    : file.name;
+        }
+        
+        function processImage() {
+            if (!selectedFile) return;
+            
+            // Show processing state
+            processBtn.disabled = true;
+            processBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // Simulate AI processing (in real app, this would be an API call)
+            setTimeout(() => {
+                // Get selected options
+                const smoothness = document.getElementById('edgeSmoothness').value;
+                const format = document.getElementById('outputFormat').value;
+                const enhance = document.getElementById('enhanceQuality').checked;
+                const shadow = document.getElementById('shadowEffect').checked;
+                
+                // For demo, we'll just use the original image
+                // In a real app, you would send to a background removal API
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    processedImageUrl = e.target.result;
                     
-                    // Draw original image
-                    ctx.drawImage(originalImage, 0, 0);
-                    
-                    // Get image data
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const data = imageData.data;
-                    
-                    // Get slider values
-                    const precision = precisionSlider.value / 100;
-                    const smoothness = smoothSlider.value / 100;
-                    
-                    // Sample background color (edges of image)
-                    const edgePixels = getEdgePixels(data, canvas.width, canvas.height);
-                    const bgColor = estimateBackgroundColor(edgePixels);
-                    
-                    // Remove background
-                    for (let i = 0; i < data.length; i += 4) {
-                        const r = data[i];
-                        const g = data[i + 1];
-                        const b = data[i + 2];
-                        
-                        // Calculate color difference from background
-                        const diff = colorDifference(r, g, b, bgColor.r, bgColor.g, bgColor.b);
-                        
-                        // If color is similar to background, make transparent
-                        if (diff < 30 + (70 * (1 - precision))) {
-                            // Apply edge smoothing
-                            const alpha = diff < (30 + (70 * (1 - precision))) * smoothness ? 0 : 255;
-                            data[i + 3] = alpha;
-                        }
+                    // Apply some visual effects for demo purposes
+                    if (shadow) {
+                        resultPreview.style.boxShadow = '8px 8px 15px rgba(0,0,0,0.2)';
                     }
                     
-                    // Put modified data back
-                    ctx.putImageData(imageData, 0, 0);
+                    // Show download options
+                    resultsBox.style.display = 'block';
+                    processBtn.innerHTML = '<i class="fas fa-magic"></i> Remove Background';
                     
-                    // Convert to PNG with transparency
-                    canvas.toBlob((blob) => {
-                        resultImageBlob = blob;
-                        resultPreview.src = URL.createObjectURL(blob);
-                        resultSize.textContent = formatFileSize(blob.size);
-                        
-                        // Calculate stats
-                        const reduction = Math.round(((originalImage.fileSize - blob.size) / originalImage.fileSize) * 100);
-                        const saved = originalImage.fileSize - blob.size;
-                        
-                        reductionPercent.textContent = `${reduction}%`;
-                        savedSize.textContent = formatFileSize(saved);
-                        
-                        // Show results
-                        processing.style.display = 'none';
-                        previewSection.style.display = 'block';
-                        downloadSection.style.display = 'block';
-                    }, 'image/png');
-                }, 1500); // Simulate processing time
-            }
-
-            // Update background display
-            function updateBackground() {
-                if (!resultPreview.src) return;
-                
-                switch(currentBg) {
-                    case 'transparent':
-                        resultPreview.style.backgroundColor = 'transparent';
-                        resultPreview.style.backgroundImage = 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABeSURBVDhP7dKxDcAgDERRZw0WYQ1WYQ1G8Qh0aZImQfzJkXxN9C6SfJd0V9W1tQZgBm5gB3ZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBXZgBQ7gA3Q8mQZRAAAAAElFTkSuQmCC")';
-                        break;
-                    case 'white':
-                        resultPreview.style.backgroundColor = 'white';
-                        resultPreview.style.backgroundImage = 'none';
-                        break;
-                    case 'gray':
-                        resultPreview.style.backgroundColor = '#f3f4f6';
-                        resultPreview.style.backgroundImage = 'none';
-                        break;
-                    case 'custom':
-                        // In a real app, you'd show a color picker
-                        resultPreview.style.backgroundColor = '#d1fae5';
-                        resultPreview.style.backgroundImage = 'none';
-                        break;
-                }
-            }
-
-            // Download result
-            function downloadResult() {
-                if (!resultImageBlob) return;
-                
-                const url = URL.createObjectURL(resultImageBlob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'no-background.png';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }
-
-            // Reset tool
-            function resetTool() {
-                originalImage = null;
-                resultImageBlob = null;
-                fileInput.value = '';
-                originalPreview.src = '';
-                resultPreview.src = '';
-                
-                controls.style.display = 'none';
-                previewSection.style.display = 'none';
-                downloadSection.style.display = 'none';
-                processing.style.display = 'none';
-                
-                uploadArea.style.display = 'block';
-            }
-
-            // Helper functions
-            function getEdgePixels(data, width, height) {
-                const edgePixels = [];
-                const step = Math.max(1, Math.floor(width / 20));
-                
-                // Sample pixels from edges
-                for (let x = 0; x < width; x += step) {
-                    // Top edge
-                    const topIdx = (x + 0 * width) * 4;
-                    edgePixels.push({r: data[topIdx], g: data[topIdx+1], b: data[topIdx+2]});
-                    
-                    // Bottom edge
-                    const bottomIdx = (x + (height-1) * width) * 4;
-                    edgePixels.push({r: data[bottomIdx], g: data[bottomIdx+1], b: data[bottomIdx+2]});
-                }
-                
-                for (let y = 0; y < height; y += step) {
-                    // Left edge
-                    const leftIdx = (0 + y * width) * 4;
-                    edgePixels.push({r: data[leftIdx], g: data[leftIdx+1], b: data[leftIdx+2]});
-                    
-                    // Right edge
-                    const rightIdx = (width-1 + y * width) * 4;
-                    edgePixels.push({r: data[rightIdx], g: data[rightIdx+1], b: data[rightIdx+2]});
-                }
-                
-                return edgePixels;
-            }
-
-            function estimateBackgroundColor(pixels) {
-                let r = 0, g = 0, b = 0;
-                const count = pixels.length;
-                
-                for (const pixel of pixels) {
-                    r += pixel.r;
-                    g += pixel.g;
-                    b += pixel.b;
-                }
-                
-                return {
-                    r: Math.round(r / count),
-                    g: Math.round(g / count),
-                    b: Math.round(b / count)
+                    // Scroll to results
+                    resultsBox.scrollIntoView({ behavior: 'smooth' });
                 };
-            }
-
-            function colorDifference(r1, g1, b1, r2, g2, b2) {
-                return Math.sqrt(
-                    Math.pow(r1 - r2, 2) + 
-                    Math.pow(g1 - g2, 2) + 
-                    Math.pow(b1 - b2, 2)
-                );
-            }
-
-            function formatFileSize(bytes) {
-                if (bytes < 1024) return `${bytes} B`;
-                else if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-                else return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-            }
-
-            function showError(message) {
-                alert(message); // In production, use a nicer error display
-            }
+                reader.readAsDataURL(selectedFile);
+            }, 2000);
+        }
+        
+        function downloadImage(format) {
+            if (!processedImageUrl) return;
+            
+            // In a real app, this would download the processed image
+            alert(`In a real implementation, this would download the ${format.toUpperCase()} file`);
+            // const link = document.createElement('a');
+            // link.href = processedImageUrl;
+            // link.download = `background-removed.${format}`;
+            // link.click();
+        }
+        
+        function resetTool() {
+            selectedFile = null;
+            processedImageUrl = null;
+            fileInput.value = '';
+            originalPreview.src = '';
+            originalPreview.style.display = 'none';
+            resultPreview.src = '';
+            resultPreview.style.display = 'none';
+            resultsBox.style.display = 'none';
+            processBtn.disabled = true;
+            
+            // Reset file label
+            document.querySelector('.file-label p').textContent = 'Drag & drop your image here or click to browse';
+            document.querySelector('.file-label small').textContent = 'Supports JPG, PNG, WEBP (Max 10MB)';
+            
+            // Reset options
+            document.getElementById('edgeSmoothness').value = 'medium';
+            document.getElementById('outputFormat').value = 'png';
+            document.getElementById('enhanceQuality').checked = true;
+            document.getElementById('shadowEffect').checked = false;
+        }
+        
+        // Initialize AdSense
+        document.addEventListener('DOMContentLoaded', function() {
+            // Refresh ads after a short delay
+            setTimeout(() => {
+                if(typeof adsbygoogle !== 'undefined') {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
+            }, 1500);
         });
     </script>
 </body>
